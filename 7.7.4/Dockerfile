@@ -24,15 +24,15 @@ RUN curl "${DOWNLOAD_URL}" > $DOWNLOAD_FILE && \
   chown -R ${WWW_USER}:${WWW_GROUP} ${WWW_FOLDER}/* && \
   chown -R ${WWW_USER}:${WWW_GROUP} ${WWW_FOLDER}
 
-ADD php.ini /usr/local/etc/php/php.ini
-ADD config_override.php.pyt /usr/local/src/config_override.php.pyt
-ADD envtemplate.py /usr/local/bin/envtemplate.py
-ADD init.sh /usr/local/bin/init.sh
+ADD ../7.x.x/php.ini /usr/local/etc/php/php.ini
+ADD ../7.x.x/config_override.php.pyt /usr/local/src/config_override.php.pyt
+ADD ../7.x.x/envtemplate.py /usr/local/bin/envtemplate.py
+ADD ../7.x.x/init.sh /usr/local/bin/init.sh
 
 RUN chmod u+x /usr/local/bin/init.sh
 RUN chmod u+x /usr/local/bin/envtemplate.py
 
-ADD crons.conf /root/crons.conf
+ADD ../7.x.x/crons.conf /root/crons.conf
 RUN crontab /root/crons.conf
 
 EXPOSE 80
